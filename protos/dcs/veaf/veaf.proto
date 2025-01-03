@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+package dcs.veaf;
+
+import "veaf/common/v0/common.proto";
+import "veaf/aliases/v0/aliases.proto";

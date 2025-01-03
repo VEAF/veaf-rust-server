@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package dcs.veaf.aliases.v0;
+
+// Import common protobuf types
+import "google/protobuf/empty.proto";
+import "dcs/common/v0/common.proto";
+import "dcs/veaf/common/v0/common.proto";
+
+
+// Service for managing aliases
+service AliasesService {
+    // List all available aliases
+    rpc GetAliases(google.protobuf.Empty) returns (AliasesListResponse);
+    
+    // Get a specific alias by name
+    rpc GetAlias(VeafGetByNameRequest) returns (Alias);
+
+    // Execute an alias
+    rpc RunAlias(RunAliasRequest) returns (google.protobuf.Empty);
+}
+
+// Response message for listing aliases
+message AliasesListResponse {
+    repeated VeafAlias aliases = 1;
+}
+
+// Request message for running an alias
+message RunAliasRequest {
+    string name = 1;
+    dcs.common.v0.InputPosition position = 2;
+}
